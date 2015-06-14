@@ -1,0 +1,73 @@
+<!--
+  Copyright 2015 Maxwell Hadley
+
+  See accompanying LICENSE file for terms of use
+-->
+
+<!-- Edit dialog  -->
+
+<script type="text/x-red" data-template-name="htu21d">
+	<div class="form-row">
+        <label for="node-input-device"><i class="fa fa-cog"></i> Device</label>
+        <input type="text" id="node-input-device" placeholder="Device">
+    </div>
+	<div class="form-row">
+        <label for="node-input-timer"><i class="fa fa-repeat"></i> Update at</label>
+        <input type="text" id="node-input-timer" placeholder="Timer" style="width:17%">
+        <label>second intervals</label>
+    </div>
+    <div class="form-row">
+        <label><i class="fa fa-tachometer"></i> Units</label>
+        <label for="node-input-dewpointUnits" style="width:15%">Dewpoint:</label>
+        <select id="node-input-dewpointUnits" style="width:12%">
+            <option value="degC">˚C</option>
+            <option value="degF">˚F</option>
+        </select>
+        <label for="node-input-temperatureUnits"> Temperature:</label>
+        <select id="node-input-temperatureUnits" style="width:12%">
+            <option value="degC">˚C</option>
+            <option value="degF">˚F</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+<style>
+</style>
+
+<!-- Help text -->
+<script type="text/x-red" data-help-name="htu21d">
+   <p>Reads data from a Measurement Specialities HTU21D Humidity sensor using the I2C interface</p>
+   Periodically reads the sensor and sends a message containing temperature, relative humidity and dewpoint
+   (<b>msg.payload.temperature</b>, <b>msg.payload.humidity</b> and <b>msg.payload.dewpoint</b>).
+   Relative humidity units are always percent; the temperature and dewpoint units
+   of measurement can be selected as required.</p>
+   <p>Dewpoint is calculated from the measured temperature and relative humidity</p>
+   <p>The measurement update interval can also be specified.</p>
+</script>
+
+<!-- Register node type  -->
+<script type="text/javascript">
+    RED.nodes.registerType('htu21d', {
+        category: 'hardware',     
+        defaults: {        
+  			device: {value: '\/dev\/i2c-1', required:false},
+			timer: {value: '15', required:true},
+            dewpointUnits: {value: 'degC', required:true},
+            temperatureUnits: {value: 'degC', required:true},
+			name: {value: ''}
+        },
+		color:'#d8bfd8',
+        inputs:0,              
+        outputs:1,          
+        icon: 'chip.png',
+        label: function() {   
+            return this.name || 'HTU21D';
+        },
+        labelStyle: function () {
+            return this.name ? 'node_label_italic' : '';
+        }
+    });
+</script>

@@ -1,0 +1,26 @@
+ {
+	"name" : "node-red-contrib-htu21d",
+	"version" : "0.1.0",
+	"description" : "Connect a Measurement Specialties HTU21D humidity sensor to Node-RED",
+	"repository" : {
+		"type" : "git",
+		"url" : "https://github.com/maxwellhadley/node-red-contrib-htu21d.git"
+	},
+	"keywords" : [ "node-red", "htu21d", "humidity", "sensor" ],
+	"author" : {
+		"name" : "Max Hadley",
+		"email" : "max@zepler.org"
+	},
+	"license" : "BSD-2-Clause",
+	"bugs" : {
+		"url" : "https://github.com/maxwellhadley/node-red-contrib-htu21d/issues"
+	},
+	"node-red" : {
+		"nodes" : {
+			"htu21d" : "htu21d.js"
+		}
+	},
+	"dependencies" : {
+		"node-htu21d" : ">=0.2.0"
+	}
+}
