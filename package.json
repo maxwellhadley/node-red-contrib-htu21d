@@ -21,6 +21,6 @@
 		}
 	},
 	"dependencies" : {
-		"node-htu21d" : ">=0.2.0"
+		"htu21d" : ">=0.2.0"
 	}
 }
