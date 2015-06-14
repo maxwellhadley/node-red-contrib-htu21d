@@ -25,7 +25,7 @@ Requirements
 
 This node uses the [htu21d](https://www.npmjs.com/package/htu21d) npm package to access the device over an I2C bus.
 This is generally supported only on Linux. The bus device name (e.g. /dev/i2c-1) is configurable: only one actual sensor
-is allowed on each bus.
+is allowed on each bus, but the bus can be shared with any other I2C device not using the (7-bit) address 0x40.
 
 Usage
 -----
@@ -38,5 +38,5 @@ The output message payload holds the following properties:
 
 **dewpoint** - calculated dewpoint in ˚C or ˚F as configured
 
-Measurements are repeated at a configurable interval
+Measurements are repeated at a configurable interval: each measurement takes just over 0.1 second.
 
